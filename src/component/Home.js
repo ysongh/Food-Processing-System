@@ -8,6 +8,10 @@ const Home = () => {
             <Link to="/qrreader">
                 Scan QR Code
             </Link>
+            <br />
+            <Link to="/createqr">
+                Create QR Code
+            </Link>
         </>
     )
 }
