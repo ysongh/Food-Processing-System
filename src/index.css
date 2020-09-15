@@ -2,6 +2,11 @@ body {
   margin: 0;
 }
 
+.main {
+  height: 90vh;
+  overflow: scroll;
+}
+
 .qr-code{
   margin: 1rem !important;
 }
