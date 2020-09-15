@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Warehouses = () => {
     const [warehouses] = useState([
@@ -19,7 +20,9 @@ const Warehouses = () => {
     return(
         <>
             <h2>List of Warehouses</h2>
-
+            <Link to="/addwarehouses">
+                Add Warehouses
+            </Link>
             { warehouses.map((warehouse, index)  => {
                 return (
                     <div key={index}>
