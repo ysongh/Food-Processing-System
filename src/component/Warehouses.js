@@ -19,7 +19,7 @@ const Warehouses = () => {
 
     return(
         <>
-            <h2>List of Warehouses</h2>
+            <h1>List of Warehouses</h1>
             <Link to="/addwarehouses">
                 Add Warehouses
             </Link>

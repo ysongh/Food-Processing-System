@@ -6,7 +6,7 @@ class QRcode extends Component {
       if (data) {
           setTimeout(
               function() {
-                  this.props.history.push(`/item/${data}`)
+                  this.props.history.push(`/${data}`)
               }.bind(this),
               1000
           )
@@ -25,8 +25,7 @@ class QRcode extends Component {
                 <QrReader
                     delay={300}
                     onError={this.handleError}
-                    onScan={this.handleScan}
-                    className="qr-reader" />
+                    onScan={this.handleScan} />
             </>
         )
     }
