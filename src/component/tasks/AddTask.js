@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 
 import TextInputField from '../common/TextInputField';
+import TextAreaField from '../common/TextAreaField';
 
 const AddWarehouse = () => {
     const [title, setTitle] = useState("");
@@ -18,7 +19,7 @@ const AddWarehouse = () => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
             />
-            <TextInputField
+            <TextAreaField
                 label="Description of this Task"
                 name="description"
                 type="text"
