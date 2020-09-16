@@ -1,13 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const app = express();
+const connectDB = require("./config/db");
 
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+connectDB();
 
-app.get('/', (req, res) => res.send('Server Work'));
+const server = express();
+
+server.use(bodyParser.urlencoded({extended: false}));
+server.use(bodyParser.json());
+
+server.get('/', (req, res) => res.send('Server Work'));
 
 const port = process.env.PORT || 1000;
 
-app.listen(port, () => console.log('Port open on', port));
+server.listen(port, () => console.log('Port open on', port));
