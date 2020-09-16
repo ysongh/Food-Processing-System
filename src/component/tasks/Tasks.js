@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import TextInputField from '../common/TextInputField';
 
-const Tasks = () => {
+const AddTask = () => {
     const [gtin, setgtin] = useState("");
     const [gln, setgln] = useState("");
     const [warehouses] = useState([
@@ -53,4 +53,4 @@ const Tasks = () => {
     )
 }
 
-export default Tasks;
+export default AddTask;

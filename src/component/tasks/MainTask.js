@@ -21,7 +21,7 @@ const MainTask = () => {
 
     return(
         <div className={classes.container}>
-            <Button className={classes.btn} component={Link} to="/task/main" variant="contained">
+            <Button className={classes.btn} component={Link} to="/task/add" variant="contained">
                 New Task
             </Button>
             <br />
