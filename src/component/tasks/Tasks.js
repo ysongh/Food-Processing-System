@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Warehouses = () => {
+const Tasks = () => {
     const [warehouses] = useState([
         {
             "name": "Warehouse #1",
@@ -35,4 +35,4 @@ const Warehouses = () => {
     )
 }
 
-export default Warehouses;
+export default Tasks;
