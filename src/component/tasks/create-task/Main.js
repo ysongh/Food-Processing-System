@@ -5,6 +5,7 @@ import { Stepper, Step, StepLabel, Button, Typography } from '@material-ui/core'
 
 import axios from '../../../axios';
 import AddInformation from './AddInformation';
+import Review from './Review';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -94,10 +95,15 @@ export default function Main() {
       <div>
         {activeStep === steps.length ? (
           <div>
-            <Typography>Review</Typography>
+            <Review
+              title={title}
+              description={description}
+              detail={detail}
+              destination={destination}
+              startDate={startDate} />
 
-            <Button onClick={handleBack}>Back</Button>
-            <Button onClick={() => onSubmit()} variant="contained">
+            <Button className={classes.backButton} onClick={handleBack}>Back</Button>
+            <Button className={classes.nextButton} onClick={() => onSubmit()} variant="contained">
               Create
             </Button>
           </div>
