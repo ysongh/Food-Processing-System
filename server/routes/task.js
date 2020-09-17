@@ -24,7 +24,8 @@ router.post('/create', async (req, res) => {
             title: req.body.title,
             description: req.body.description,
             detail: req.body.detail,
-            destination: req.body.destination
+            destination: req.body.destination,
+            startDate: req.body.startDate
         };
 
         const dataTask = await Task.create(newTask);

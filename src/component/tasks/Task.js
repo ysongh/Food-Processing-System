@@ -64,6 +64,13 @@ const Task = () => {
             <Typography className={classes.p} variant="body1">
                 { data.destination }
             </Typography>
+
+            <Typography variant="h6">
+                Start Date:
+            </Typography>
+            <Typography className={classes.p} variant="body1">
+                { data.startDate }
+            </Typography>
         </>
     )
 }

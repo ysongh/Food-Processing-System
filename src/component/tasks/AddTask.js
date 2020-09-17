@@ -18,7 +18,7 @@ const AddTask = () => {
 
     const onSubmit = async () => {
         try{
-            const taskData = { title, description, detail, destination }
+            const taskData = { title, description, detail, destination, startDate }
             await axios.post('/task/create', taskData);
 
             history.push('/task/main');
