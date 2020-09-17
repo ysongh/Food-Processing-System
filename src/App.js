@@ -8,7 +8,7 @@ import Home from './component/Home';
 import MainTask from './component/tasks/MainTask';
 import Tasks from './component/tasks/Tasks';
 import Task from './component/tasks/Task';
-import AddTask from './component/tasks/AddTask';
+import CreateTask from './component/tasks/create-task/Main';
 import QRcode from './component/QRcode';
 import CreateQR from './component/CreateQR';
 
@@ -20,7 +20,7 @@ function App() {
         <Route exact path="/task/main" component={MainTask} />
         <Route exact path="/task/tasks/:isCompleted" component={Tasks} />
         <Route exact path="/task/task/:taskid" component={Task} />
-        <Route exact path="/task/add" component={AddTask} />
+        <Route exact path="/task/add" component={CreateTask} />
         <Route exact path="/qrreader" component={QRcode} />
         <Route exact path="/createqr" component={CreateQR} />
       </Container>

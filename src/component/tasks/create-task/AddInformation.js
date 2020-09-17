@@ -1,35 +1,13 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
+import React from 'react';
 
-import axios from '../../axios';
-import TextInputField from '../common/TextInputField';
-import TextAreaField from '../common/TextAreaField';
-import DateInputField from '../common/DateInputField';
+import TextInputField from '../../common/TextInputField';
+import TextAreaField from '../../common/TextAreaField';
+import DateInputField from '../../common/DateInputField';
 
-const AddTask = () => {
-    const history = useHistory();
-
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [detail, setDetail] = useState("");
-    const [destination, setDestination] = useState("");
-    const [startDate, setStartDate] = useState("");
-
-    const onSubmit = async () => {
-        try{
-            const taskData = { title, description, detail, destination, startDate }
-            await axios.post('/task/create', taskData);
-
-            history.push('/task/main');
-        } catch(err){
-            console.error(err);
-        }
-    }
-
+const AddInformation = ({ title, setTitle, description, setDescription, detail, setDetail, destination, setDestination, startDate, setStartDate }) => {
     return(
         <>
-            <h1>Create New Task</h1>
+            <h1>Add Information</h1>
             <TextInputField
                 label="Title of this Task"
                 name="title"
@@ -65,11 +43,8 @@ const AddTask = () => {
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
             />
-            <Button onClick={() => onSubmit()} variant="contained">
-                Create
-            </Button>
         </>
     )
 }
 
-export default AddTask;
+export default AddInformation;
