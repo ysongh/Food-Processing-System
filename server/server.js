@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const connectDB = require("./config/db");
 
@@ -9,6 +10,8 @@ const server = express();
 
 server.use(bodyParser.urlencoded({extended: false}));
 server.use(bodyParser.json());
+
+server.use(cors());
 
 server.get('/', (req, res) => res.send('Server Work'));
 
