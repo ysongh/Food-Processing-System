@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import axios from '../../axios';
 import TextInputField from '../common/TextInputField';
 import TextAreaField from '../common/TextAreaField';
+import DateInputField from '../common/DateInputField';
 
 const AddTask = () => {
     const history = useHistory();
@@ -13,6 +14,7 @@ const AddTask = () => {
     const [description, setDescription] = useState("");
     const [detail, setDetail] = useState("");
     const [destination, setDestination] = useState("");
+    const [startDate, setStartDate] = useState("");
 
     const onSubmit = async () => {
         try{
@@ -57,6 +59,12 @@ const AddTask = () => {
                 onChange={(e) => setDestination(e.target.value)}
             />
 
+            <DateInputField
+                label="Start Date"
+                name="startDate"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+            />
             <Button onClick={() => onSubmit()} variant="contained">
                 Create
             </Button>
