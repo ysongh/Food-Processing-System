@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router";
 import { makeStyles } from '@material-ui/core/styles';
 import { List, ListItem, ListItemText } from '@material-ui/core';
 
@@ -12,6 +13,7 @@ const useStyles = makeStyles({
 
 const Tasks = () => {
     const classes = useStyles();
+    const { isCompleted } = useParams();
 
     const [data, setData] = useState([]);
     const [go] = useState(true);
@@ -19,7 +21,7 @@ const Tasks = () => {
     useEffect(() => {
         async function getTasks() {
             try{
-                const { data } = await axios.get('/task/tasks');
+                const { data } = await axios.get('/task/tasks?completed=' + isCompleted);
     
                 setData(data.data);
             } catch(err){
@@ -28,11 +30,11 @@ const Tasks = () => {
         }
         
         getTasks();
-    }, [go]);
+    }, [go, isCompleted]);
 
     return(
         <>
-            <h1>Tasks</h1>
+            <h1>{ isCompleted === 'false' ? 'Ongoing ' : 'Completed ' }Tasks</h1>
             <List>
                 { data.map((task, index) => {
                     return(

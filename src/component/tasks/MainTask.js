@@ -25,11 +25,11 @@ const MainTask = () => {
                 New Task
             </Button>
             <br />
-            <Button className={classes.btn} component={Link} to="/task/tasks" variant="contained">
+            <Button className={classes.btn} component={Link} to="/task/tasks/false" variant="contained">
                 Ongoing Task
             </Button>
             <br />
-            <Button className={classes.btn} component={Link} to="/task/main" variant="contained">
+            <Button className={classes.btn} component={Link} to="/task/tasks/true" variant="contained">
                 Completed Task
             </Button>
         </div>
