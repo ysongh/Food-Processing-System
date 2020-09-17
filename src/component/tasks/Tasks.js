@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { List, ListItem, ListItemText } from '@material-ui/core';
+
+import axios from '../../axios';
 
 const useStyles = makeStyles({
     list: {
@@ -11,28 +13,37 @@ const useStyles = makeStyles({
 const Tasks = () => {
     const classes = useStyles();
 
+    const [data, setData] = useState([]);
+    const [go] = useState(true);
+
+    useEffect(() => {
+        async function getTasks() {
+            try{
+                const { data } = await axios.get('/task/tasks');
+    
+                setData(data.data);
+            } catch(err){
+                console.error(err);
+            }
+        }
+        
+        getTasks();
+    }, [go]);
+
     return(
         <>
             <h1>Tasks</h1>
             <List>
-                <ListItem className={classes.list} button>
-                    <ListItemText
-                        primary="09/14/2020"
-                        secondary="Repackage eggs in New York area"
-                    />
-                </ListItem>
-                <ListItem className={classes.list} button>
-                    <ListItemText
-                        primary="09/14/2020"
-                        secondary="Repackage eggs in New York area"
-                    />
-                </ListItem>
-                <ListItem className={classes.list} button>
-                    <ListItemText
-                        primary="09/14/2020"
-                        secondary="Repackage eggs in New York area"
-                    />
-                </ListItem>
+                { data.map((task, index) => {
+                    return(
+                        <ListItem className={index % 2 === 0 && classes.list} key={task._id} button>
+                            <ListItemText
+                                primary={task.createdAt}
+                                secondary={task.title}
+                            />
+                        </ListItem>
+                    )
+                })}
             </List>
             
         </>
