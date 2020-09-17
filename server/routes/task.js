@@ -36,4 +36,16 @@ router.post('/create', async (req, res) => {
     }
 });
 
+// GET /api/task/task/<taskid>
+// find a task by id
+router.get('/task/:taskid', async (req, res) => {
+    try{
+        const task = await Task.findById(req.params.taskid);
+
+        return res.status(200).json({ data: task });
+    } catch(err){
+        console.error(err);
+    }
+});
+
 module.exports = router;
