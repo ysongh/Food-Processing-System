@@ -3,9 +3,22 @@ const router = express.Router();
 
 const Task = require('../models/Task');
 
-// POST /api/task
+// GET /api/task/tasks?completed=false
+// find all tasks that is completed or not
+router.get('/tasks', async (req, res) => {
+    try{
+        let isCompleted = req.query.completed || false;
+        const tasks = await Task.find({ isCompleted });
+
+        return res.status(200).json({ data: tasks });
+    } catch(err){
+        console.error(err);
+    }
+});
+
+// POST /api/task/create
 // create a task
-router.post('/', async (req, res) => {
+router.post('/create', async (req, res) => {
     try{
         const newTask = {
             title: req.body.title,
