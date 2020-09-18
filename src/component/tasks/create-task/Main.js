@@ -39,6 +39,7 @@ export default function Main() {
   const [detail, setDetail] = useState("");
   const [destination, setDestination] = useState("");
   const [startDate, setStartDate] = useState("");
+  const [workerIds, setWorkerIds] = useState([]);
   const [workerList, setWorkerList] = useState([]);
   const [go] = useState(true);
   const steps = getSteps();
@@ -94,7 +95,7 @@ export default function Main() {
       case 1:
         return 'Scan QR Codes';
       case 2:
-        return <SelectWorkers workerList={workerList} />;
+        return <SelectWorkers workerList={workerList} workerIds={workerIds} setWorkerIds={setWorkerIds} />;
       default:
         return 'Page not found';
     }
@@ -117,7 +118,8 @@ export default function Main() {
               description={description}
               detail={detail}
               destination={destination}
-              startDate={startDate} />
+              startDate={startDate}
+              workerIds={workerIds} />
 
             <Button className={classes.backButton} onClick={handleBack}>Back</Button>
             <Button className={classes.nextButton} onClick={() => onSubmit()} variant="contained">

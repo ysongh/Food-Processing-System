@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     }
 });
 
-const Review = ({ title, description, detail, destination, startDate }) => {
+const Review = ({ title, description, detail, destination, startDate, workerIds }) => {
     const classes = useStyles();
 
     return(
@@ -49,6 +49,17 @@ const Review = ({ title, description, detail, destination, startDate }) => {
             <Typography className={classes.p} variant="body1">
                 { startDate }
             </Typography>
+
+            <Typography variant="h6">
+                Workers:
+            </Typography>
+            {workerIds.map(worker => {
+                return(
+                    <Typography key={worker.id} className={classes.p} variant="body1">
+                        { worker.name } {worker.amount}
+                    </Typography>
+                )
+            })}
         </>
     )
 }

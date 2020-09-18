@@ -9,60 +9,50 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
-const SelectWorkers = () => {
+const SelectWorkers = ({ workerList, workerIds, setWorkerIds }) => {
     const classes = useStyles();
     const [checked, setChecked] = useState([]);
 
     const handleToggle = (value) => () => {
         const currentIndex = checked.indexOf(value);
         const newChecked = [...checked];
+        const workers = [...workerIds];
 
         if (currentIndex === -1) {
             newChecked.push(value);
+            workers.push({
+                id: workerList[value]._id,
+                name: workerList[value].name,
+                amount: 0
+            });
         } else {
             newChecked.splice(currentIndex, 1);
+            workers.splice(currentIndex, 1);
         }
 
         setChecked(newChecked);
+        setWorkerIds(workers);
     };
 
   return (
       <>
         <h1>Select the available workers</h1>
         <List className={classes.root}>
-            <ListItem role={undefined} dense button onClick={handleToggle(0)}>
-                <ListItemIcon>
-                    <Checkbox
-                        edge="start"
-                        checked={checked.indexOf(0) !== -1}
-                        tabIndex={-1}
-                        disableRipple
-                    />
-                </ListItemIcon>
-                <ListItemText primary="Bob" />
-            </ListItem>
-            <ListItem role={undefined} dense button onClick={handleToggle(1)}>
-                <ListItemIcon>
-                    <Checkbox
-                        edge="start"
-                        checked={checked.indexOf(1) !== -1}
-                        tabIndex={-1}
-                        disableRipple
-                    />
-                </ListItemIcon>
-                <ListItemText primary="Jill" />
-            </ListItem>
-            <ListItem role={undefined} dense button onClick={handleToggle(2)}>
-                <ListItemIcon>
-                    <Checkbox
-                        edge="start"
-                        checked={checked.indexOf(2) !== -1}
-                        tabIndex={-1}
-                        disableRipple
-                    />
-                </ListItemIcon>
-                <ListItemText primary="John" />
-            </ListItem>
+            { workerList.map((worker, index) => {
+                return(
+                    <ListItem key={worker._id}role={undefined} dense button onClick={handleToggle(index)}>
+                        <ListItemIcon>
+                            <Checkbox
+                                edge="start"
+                                checked={checked.indexOf(index) !== -1}
+                                tabIndex={-1}
+                                disableRipple
+                            />
+                        </ListItemIcon>
+                        <ListItemText primary={worker.name} />
+                    </ListItem>
+                )
+            })}
         </List>
     </>
   );
