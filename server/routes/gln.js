@@ -33,4 +33,20 @@ router.post('/create', async (req, res) => {
     }
 });
 
+// GET /api/gln/code/<code>
+// find gln by code number
+router.get('/code/:code', async (req, res) => {
+    try{
+        const gln = await GLN.findOne({ code: req.params.code });
+
+        if(!gln){
+            return res.status(400).json({ errors: 'GLN not found' });
+        }
+
+        return res.status(200).json({ data: gln });
+    } catch(err){
+        console.error(err);
+    }
+});
+
 module.exports = router;
