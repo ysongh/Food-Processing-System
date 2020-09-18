@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import QRCode from 'react-qr-code';
 
 const CreateQR = () => {
-    const [qrValue, setQRValue] = useState(0);
+    const [qrValue, setQRValue] = useState(3);
     const [qrCodes, setQRCodes] = useState([]);
 
     const createQRCodes = () => {

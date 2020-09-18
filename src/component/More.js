@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
     container: {
-        marginTop: '10rem'
+        marginTop: '7rem'
     },
     btn: {
         display: 'block',
@@ -23,8 +23,8 @@ const More = () => {
     return(
         <>
             <div className={classes.container}>
-                <Button className={classes.btn} component={Link} to="/task/main" variant="contained">
-                    Task
+                <Button className={classes.btn} component={Link} to="/glns" variant="contained">
+                    Find GLN
                 </Button>
                 <br />
                 <Button className={classes.btn} component={Link} to="/createqr" variant="contained">
