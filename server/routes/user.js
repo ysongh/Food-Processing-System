@@ -33,4 +33,20 @@ router.post('/signup', async (req, res) => {
     }
 });
 
+// PUT /api/user/login
+// login the user
+router.put('/login', async (req, res) => {
+    try{
+        const user = await User.findOne({ name: req.body.name });
+
+        if(!user){
+            return res.status(400).json({ errors: 'User not found' });
+        }
+
+        return res.status(200).json({ data: user });
+    } catch(err){
+        console.error(err);
+    }
+});
+
 module.exports = router;
