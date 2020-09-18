@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import QRCode from 'react-qr-code';
-import { v4 as uuidV4 } from 'uuid';
 
 const CreateQR = () => {
     const [qrValue, setQRValue] = useState(0);
@@ -10,7 +9,7 @@ const CreateQR = () => {
         let temp = [];
 
         for(let i = 0; i < qrValue; i++){
-            temp.push(uuidV4());
+            temp.push(Math.floor(1000000000 + Math.random() * 9000000000));
         }
         
         setQRCodes(temp);
@@ -32,6 +31,7 @@ const CreateQR = () => {
                 return (
                     <div className="qr-code" key={index}>
                         <QRCode value={qr} />
+                        <p>{qr}</p>
                     </div>
                 )
             }) }
