@@ -5,6 +5,7 @@ import { Stepper, Step, StepLabel, Button } from '@material-ui/core';
 
 import axios from '../../../axios';
 import AddInformation from './AddInformation';
+import SelectWorkers from './SelectWorkers';
 import Review from './Review';
 
 const useStyles = makeStyles((theme) => ({
@@ -77,7 +78,7 @@ export default function Main() {
       case 1:
         return 'Scan QR Codes';
       case 2:
-        return 'Select Worker';
+        return <SelectWorkers />;
       default:
         return 'Page not found';
     }
@@ -119,7 +120,7 @@ export default function Main() {
                 Back
               </Button>
               <Button className={classes.nextButton} variant="contained" color="primary" onClick={handleNext}>
-                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                Next
               </Button>
             </div>
           </div>
