@@ -3,6 +3,18 @@ const router = express.Router();
 
 const User = require('../models/User');
 
+// GET /api/user/workers
+// find all workers
+router.get('/workers', async (req, res) => {
+    try{
+        const users = await User.find({ type: 'Worker' });
+
+        return res.status(200).json({ data: users });
+    } catch(err){
+        console.error(err);
+    }
+});
+
 // POST /api/user/signup
 // create a user
 router.post('/signup', async (req, res) => {
