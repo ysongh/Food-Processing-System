@@ -15,6 +15,7 @@ server.use(cors());
 
 server.get('/', (req, res) => res.send('Server Work'));
 
+server.use('/api/user', require('./routes/user'));
 server.use('/api/task', require('./routes/task'));
 
 const port = process.env.PORT || 1000;
