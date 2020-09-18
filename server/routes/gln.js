@@ -3,6 +3,18 @@ const router = express.Router();
 
 const GLN = require('../models/GLN');
 
+// GET /api/gln/all
+// find all GLN
+router.get('/all', async (req, res) => {
+    try{
+        const glns = await GLN.find();
+
+        return res.status(200).json({ data: glns });
+    } catch(err){
+        console.error(err);
+    }
+});
+
 // POST /api/gln/create
 // create a GLN
 router.post('/create', async (req, res) => {
