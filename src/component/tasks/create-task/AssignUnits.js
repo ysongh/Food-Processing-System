@@ -14,20 +14,31 @@ const useStyles = makeStyles({
     }
 });
 
-const AssignUnits = ({ workerIds }) => {
+const AssignUnits = ({ workerIds, setWorkerIds }) => {
     const classes = useStyles();
+
+    const updateUnits = (value, index) => {
+        let temp = [...workerIds];
+        temp[index].amount = value;
+
+        setWorkerIds(temp);
+    }
 
     return(
         <>
             <h1>Assign Units to Workers</h1>
             
-            {workerIds.map(worker => {
+            {workerIds.map((worker, index) => {
                 return(
                     <Box className={classes.area}>
                         <Typography key={worker.id} className={classes.p} variant="h6">
                             { worker.name }
                         </Typography>
-                        <TextField value={worker.amount} variant="outlined"/>
+                        <TextField
+                            type="number"
+                            value={worker.amount}
+                            variant="outlined"
+                            onChange={(e) => updateUnits(e.target.value, index)}/>
                     </Box>
                     
                 )

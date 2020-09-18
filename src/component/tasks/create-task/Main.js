@@ -98,7 +98,7 @@ export default function Main() {
       case 2:
         return <SelectWorkers workerList={workerList} workerIds={workerIds} setWorkerIds={setWorkerIds} />;
       case 3:
-        return <AssignUnits workerIds={workerIds} />
+        return <AssignUnits workerIds={workerIds} setWorkerIds={setWorkerIds} />
       default:
         return 'Page not found';
     }

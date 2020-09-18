@@ -56,7 +56,7 @@ const Review = ({ title, description, detail, destination, startDate, workerIds 
             {workerIds.map(worker => {
                 return(
                     <Typography key={worker.id} className={classes.p} variant="body1">
-                        { worker.name } {worker.amount}
+                        { `${worker.amount} Units signs to ${worker.name}`}
                     </Typography>
                 )
             })}
