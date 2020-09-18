@@ -5,6 +5,7 @@ import { Stepper, Step, StepLabel, Button } from '@material-ui/core';
 
 import axios from '../../../axios';
 import AddInformation from './AddInformation';
+import AddBarcodes from './AddBarcodes';
 import SelectWorkers from './SelectWorkers';
 import AssignUnits from './AssignUnits';
 import Review from './Review';
@@ -37,6 +38,7 @@ export default function Main() {
   const [activeStep, setActiveStep] = useState(0);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [gln, setGLN] = useState("");
   const [detail, setDetail] = useState("");
   const [destination, setDestination] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -87,14 +89,10 @@ export default function Main() {
                   setTitle={setTitle}
                   description={description}
                   setDescription={setDescription}
-                  detail={detail}
-                  setDetail={setDetail}
-                  destination={destination}
-                  setDestination={setDestination}
                   startDate={startDate}
                   setStartDate={setStartDate} />;
       case 1:
-        return 'Scan QR Codes';
+        return <AddBarcodes gln={gln} setGLN={setGLN} />;
       case 2:
         return <SelectWorkers workerList={workerList} workerIds={workerIds} setWorkerIds={setWorkerIds} />;
       case 3:

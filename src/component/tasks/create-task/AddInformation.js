@@ -4,7 +4,7 @@ import TextInputField from '../../common/TextInputField';
 import TextAreaField from '../../common/TextAreaField';
 import DateInputField from '../../common/DateInputField';
 
-const AddInformation = ({ title, setTitle, description, setDescription, detail, setDetail, destination, setDestination, startDate, setStartDate }) => {
+const AddInformation = ({ title, setTitle, description, setDescription, startDate, setStartDate }) => {
     return(
         <>
             <h1>Add Information</h1>
@@ -21,20 +21,6 @@ const AddInformation = ({ title, setTitle, description, setDescription, detail, 
                 type="text"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-            />
-            <TextAreaField
-                label="Detail of this Task"
-                name="detail"
-                type="text"
-                value={detail}
-                onChange={(e) => setDetail(e.target.value)}
-            />
-            <TextInputField
-                label="Destination"
-                name="destination"
-                type="text"
-                value={destination}
-                onChange={(e) => setDestination(e.target.value)}
             />
 
             <DateInputField
