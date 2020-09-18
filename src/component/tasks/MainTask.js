@@ -5,12 +5,14 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
     container: {
-        marginTop: '5rem'
+        marginTop: '4rem'
     },
     btn: {
         display: 'block',
-        width: '14rem',
-        margin: '2rem auto',
+        width: '15rem',
+        paddingTop: '1.5rem',
+        paddingBottom: '1.5rem',
+        margin: '1rem auto',
         fontSize: '2rem',
         textAlign: 'center'
     }

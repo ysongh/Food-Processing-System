@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Stepper, Step, StepLabel, Button, Typography } from '@material-ui/core';
+import { Stepper, Step, StepLabel, Button } from '@material-ui/core';
 
 import axios from '../../../axios';
 import AddInformation from './AddInformation';
