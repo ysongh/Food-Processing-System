@@ -17,6 +17,7 @@ server.get('/', (req, res) => res.send('Server Work'));
 
 server.use('/api/user', require('./routes/user'));
 server.use('/api/task', require('./routes/task'));
+server.use('/api/gln', require('./routes/gln'));
 
 const port = process.env.PORT || 1000;
 
