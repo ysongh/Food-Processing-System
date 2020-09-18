@@ -17,7 +17,7 @@ const CreateQR = () => {
 
     return(
         <>
-            <h1>Create QR Code</h1>
+            <h1>Create QR Code for GTIN</h1>
             <input
                 name="qrValue"
                 type="number"
