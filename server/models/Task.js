@@ -21,6 +21,21 @@ const TaskSchema = new mongoose.Schema({
     startDate: {
         type: Date
     },
+    workers: [
+        {
+            userId: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'User'
+            },
+            amount: {
+                type: Number,
+                default: 0
+            },
+            name: {
+                type: String
+            },
+        }
+    ],
     createdAt: {
         type: Date,
         default: Date.now

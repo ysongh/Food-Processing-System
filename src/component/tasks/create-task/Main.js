@@ -69,7 +69,7 @@ export default function Main() {
 
   const onSubmit = async () => {
     try{
-        const taskData = { title, description, detail, destination, startDate }
+        const taskData = { title, description, detail, destination, startDate, workers: workerIds }
         await axios.post('/task/create', taskData);
 
         history.push('/task/main');
