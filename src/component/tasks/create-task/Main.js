@@ -6,6 +6,7 @@ import { Stepper, Step, StepLabel, Button } from '@material-ui/core';
 import axios from '../../../axios';
 import AddInformation from './AddInformation';
 import SelectWorkers from './SelectWorkers';
+import AssignUnits from './AssignUnits';
 import Review from './Review';
 
 const useStyles = makeStyles((theme) => ({
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['Add information', 'Scan QR Codes', 'Select Worker'];
+  return [1, 2, 3, 4];
 }
 
 export default function Main() {
@@ -96,6 +97,8 @@ export default function Main() {
         return 'Scan QR Codes';
       case 2:
         return <SelectWorkers workerList={workerList} workerIds={workerIds} setWorkerIds={setWorkerIds} />;
+      case 3:
+        return <AssignUnits workerIds={workerIds} />
       default:
         return 'Page not found';
     }
@@ -103,10 +106,10 @@ export default function Main() {
 
   return (
     <div className={classes.root}>
-      <Stepper activeStep={activeStep} alternativeLabel>
+      <Stepper activeStep={activeStep}>
         {steps.map((label) => (
           <Step key={label}>
-            <StepLabel>{label}</StepLabel>
+            <StepLabel></StepLabel>
           </Step>
         ))}
       </Stepper>
