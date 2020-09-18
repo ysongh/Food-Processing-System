@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Stepper, Step, StepLabel, Button } from '@material-ui/core';
@@ -31,6 +31,7 @@ function getSteps() {
 
 export default function Main() {
   const classes = useStyles();
+  const history = useHistory();
 
   const [activeStep, setActiveStep] = useState(0);
   const [title, setTitle] = useState("");
@@ -38,6 +39,8 @@ export default function Main() {
   const [detail, setDetail] = useState("");
   const [destination, setDestination] = useState("");
   const [startDate, setStartDate] = useState("");
+  const [workerList, setWorkerList] = useState([]);
+  const [go] = useState(true);
   const steps = getSteps();
 
   const handleNext = () => {
@@ -48,18 +51,31 @@ export default function Main() {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const history = useHistory();
-
-    const onSubmit = async () => {
+  
+  useEffect(() => {
+    async function getWorkers() {
         try{
-            const taskData = { title, description, detail, destination, startDate }
-            await axios.post('/task/create', taskData);
-
-            history.push('/task/main');
+            const { data } = await axios.get('/user/workers');
+            
+            setWorkerList(data.data);
         } catch(err){
             console.error(err);
         }
     }
+    
+    getWorkers();
+}, [go]);
+
+  const onSubmit = async () => {
+    try{
+        const taskData = { title, description, detail, destination, startDate }
+        await axios.post('/task/create', taskData);
+
+        history.push('/task/main');
+    } catch(err){
+        console.error(err);
+    }
+  }
 
   const getStepContent = (stepIndex) => {
     switch (stepIndex) {
@@ -78,7 +94,7 @@ export default function Main() {
       case 1:
         return 'Scan QR Codes';
       case 2:
-        return <SelectWorkers />;
+        return <SelectWorkers workerList={workerList} />;
       default:
         return 'Page not found';
     }
