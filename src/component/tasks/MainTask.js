@@ -9,6 +9,14 @@ const useStyles = makeStyles({
     container: {
         marginTop: '4rem'
     },
+    creteBtn: {
+        display: 'block',
+        margin: '2rem auto',
+        width: '17rem',
+        padding: '2rem 1rem',
+        fontSize: '2rem',
+        textAlign: 'center'
+    },
     btn: {
         display: 'block',
         margin: 'auto',
@@ -28,7 +36,7 @@ const MainTask = () => {
 
     return(
         <div className={classes.container}>
-            { user.type === 'Owner' ? (<Button className={classes.btn} component={Link} to="/task/add" variant="contained">
+            { user.type === 'Owner' ? (<Button className={classes.creteBtn} component={Link} to="/task/add" variant="contained">
                 Create Task
                 </Button>) : (
                     <Box className={classes.mb} display="flex" justifyContent="center">

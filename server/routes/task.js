@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const Task = require('../models/Task');
+const User = require('../models/User');
 
 // GET /api/task/tasks?completed=false
 // find all tasks that is completed or not
@@ -32,6 +33,18 @@ router.post('/create', async (req, res) => {
         };
 
         const dataTask = await Task.create(newTask);
+
+        for(let worker of dataTask.workers){
+            const user = await User.findOne({ name: worker.name });
+            
+            user.isNewTask = true;
+            user.tasks.unshift({
+                taskId: dataTask._id,
+                status: 'New'
+            });
+
+            await user.save();
+        }
 
         return res.status(201).json({ data: dataTask });
         
