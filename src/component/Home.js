@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import { Box, Badge, Button } from '@material-ui/core';
 
 const useStyles = makeStyles({
     container: {
@@ -9,11 +9,14 @@ const useStyles = makeStyles({
     },
     btn: {
         display: 'block',
+        margin: 'auto',
         width: '14rem',
         padding: '2rem',
-        margin: '2rem auto',
         fontSize: '2rem',
         textAlign: 'center'
+    },
+    mb: {
+        marginBottom: '2rem'
     }
 });
 
@@ -23,9 +26,14 @@ const Home = () => {
     return(
         <>
             <div className={classes.container}>
-                <Button className={classes.btn} component={Link} to="/task/main" variant="contained">
-                    Task
-                </Button>
+                <Box className={classes.mb} display="flex" justifyContent="center">
+                    <Badge badgeContent={1} color="secondary">
+                        <Button className={classes.btn} component={Link} to="/task/main" variant="contained">
+                            Task
+                        </Button>
+                    </Badge>
+                </Box>
+               
                 <br />
                 <Button className={classes.btn} component={Link} to="/qrreader" variant="contained">
                     Scan

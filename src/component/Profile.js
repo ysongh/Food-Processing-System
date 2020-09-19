@@ -41,7 +41,7 @@ const Profile = () => {
                 <Typography variant="h6">
                     { user.type}
                 </Typography>
-                <Button className={classes.btn} color="secondary" component={Link} to="/qrreader" variant="contained">
+                <Button className={classes.btn} color="secondary" component={Link} to="/" variant="contained">
                     Logout
                 </Button>
             </div>

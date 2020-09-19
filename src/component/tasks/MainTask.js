@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import { Box, Badge, Button } from '@material-ui/core';
 
 import { GlobalContext } from '../../context/GlobalState';
 
@@ -11,12 +11,14 @@ const useStyles = makeStyles({
     },
     btn: {
         display: 'block',
-        width: '15rem',
-        paddingTop: '1.5rem',
-        paddingBottom: '1.5rem',
-        margin: '1rem auto',
+        margin: 'auto',
+        width: '17rem',
+        padding: '2rem 1rem',
         fontSize: '2rem',
         textAlign: 'center'
+    },
+    mb: {
+        marginBottom: '2rem'
     }
 });
 
@@ -29,18 +31,32 @@ const MainTask = () => {
             { user.type === 'Owner' ? (<Button className={classes.btn} component={Link} to="/task/add" variant="contained">
                 Create Task
                 </Button>) : (
-                <Button className={classes.btn} component={Link} to="/task/newtask" variant="contained">
-                    New Task
-                </Button>
+                    <Box className={classes.mb} display="flex" justifyContent="center">
+                        <Badge badgeContent={1} color="secondary">
+                            <Button className={classes.btn} component={Link} to="/task/newtask" variant="contained">
+                                New Task
+                            </Button>
+                        </Badge>
+                    </Box>
+                
             ) }
-            <br />
-            <Button className={classes.btn} component={Link} to="/task/tasks/false" variant="contained">
-                Ongoing Task
-            </Button>
-            <br />
-            <Button className={classes.btn} component={Link} to="/task/tasks/true" variant="contained">
-                Completed Task
-            </Button>
+
+            <Box className={classes.mb} display="flex" justifyContent="center">
+                <Badge badgeContent={1} color="secondary">
+                    <Button className={classes.btn} component={Link} to="/task/tasks/false" variant="contained">
+                        Ongoing Task
+                    </Button>
+                </Badge>
+            </Box>
+            
+            <Box display="flex" justifyContent="center">
+                <Badge badgeContent={1} color="secondary">
+                    <Button className={classes.btn} component={Link} to="/task/tasks/true" variant="contained">
+                        Completed Task
+                    </Button>
+                </Badge>
+            </Box>
+            
         </div>
     )
 }
