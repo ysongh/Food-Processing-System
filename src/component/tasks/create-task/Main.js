@@ -44,7 +44,6 @@ export default function Main() {
   const [gln, setGLN] = useState("");
   const [gtin, setGTIN] = useState("");
   const [unit, setUnit] = useState(0);
-  const [detail, setDetail] = useState("");
   const [destination, setDestination] = useState("");
   const [startDate, setStartDate] = useState("");
   const [workerIds, setWorkerIds] = useState([]);
@@ -77,7 +76,9 @@ export default function Main() {
 
   const onSubmit = async () => {
     try{
-        const taskData = { title, description, detail, destination, startDate, workers: workerIds }
+        const detail = `${unit} units of item package (GTIN: ${gtin})`;
+
+        const taskData = { title, description, detail, destination, startDate, workers: workerIds, gtin }
         await axios.post('/task/create', taskData);
 
         history.push('/task/main');
@@ -128,8 +129,9 @@ export default function Main() {
             <Review
               title={title}
               description={description}
-              detail={detail}
+              unit={unit}
               destination={destination}
+              gtin={gtin}
               startDate={startDate}
               workerIds={workerIds} />
 
