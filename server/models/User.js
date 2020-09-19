@@ -8,10 +8,31 @@ const UserSchema = new mongoose.Schema({
     type: {
         type: String
     },
+    address: {
+        type: String
+    },
+    isNewTask: {
+        type: Boolean,
+        default: false
+    },
+    isOngoingTask: {
+        type: Boolean,
+        default: false
+    },
+    isCompletedTask: {
+        type: Boolean,
+        default: false
+    },
     tasks: [
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Task'
+            taskId: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Task'
+            },
+            status: {
+                type: String,
+                default: 'New'
+            }
         }
     ]
 });

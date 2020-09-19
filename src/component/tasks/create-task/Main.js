@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Stepper, Step, StepLabel, Button } from '@material-ui/core';
 
+import { GlobalContext } from '../../../context/GlobalState';
 import axios from '../../../axios';
 import AddInformation from './AddInformation';
 import AddBarcodes from './AddBarcodes';
@@ -38,6 +39,7 @@ function getSteps() {
 export default function Main() {
   const classes = useStyles();
   const history = useHistory();
+  const { user } = useContext(GlobalContext);
 
   const [activeStep, setActiveStep] = useState(0);
   const [title, setTitle] = useState("");
@@ -80,7 +82,7 @@ export default function Main() {
     try{
         const detail = `${unit} units of item package (GTIN: ${gtin}) from ${location} (GLN: ${gln})`;
 
-        const taskData = { title, description, detail, destination, startDate, workers: workerIds, gtin }
+        const taskData = { title, description, detail, destination, startDate, workers: workerIds, gtin, ownerId: user._id }
         await axios.post('/task/create', taskData);
 
         history.push('/task/main');
