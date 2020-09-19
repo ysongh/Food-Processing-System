@@ -29,7 +29,7 @@ const MainTask = () => {
             { user.type === 'Owner' ? (<Button className={classes.btn} component={Link} to="/task/add" variant="contained">
                 Create Task
                 </Button>) : (
-                <Button className={classes.btn} component={Link} to="/task/tasks/false" variant="contained">
+                <Button className={classes.btn} component={Link} to="/task/newtask" variant="contained">
                     New Task
                 </Button>
             ) }
