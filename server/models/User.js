@@ -29,6 +29,15 @@ const UserSchema = new mongoose.Schema({
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'Task'
             },
+            title: {
+                type: String,
+            },
+            description: {
+                type: String
+            },
+            destination: {
+                type: String
+            },
             status: {
                 type: String,
                 default: 'New'

@@ -36,10 +36,13 @@ router.post('/create', async (req, res) => {
 
         for(let worker of dataTask.workers){
             const user = await User.findOne({ name: worker.name });
-            
+
             user.isNewTask = true;
             user.tasks.unshift({
                 taskId: dataTask._id,
+                title: dataTask.title,
+                description: dataTask.description,
+                destination: dataTask.destination,
                 status: 'New'
             });
 

@@ -49,4 +49,20 @@ router.put('/login', async (req, res) => {
     }
 });
 
+// PUT /api/user/newtask/<userid>
+// get the user's new task
+router.get('/newtask/:userid', async (req, res) => {
+    try{
+        const user = await User.findById(req.params.userid);
+
+        if(!user){
+            return res.status(400).json({ errors: 'User not found' });
+        }
+
+        return res.status(200).json({ data: user });
+    } catch(err){
+        console.error(err);
+    }
+});
+
 module.exports = router;
