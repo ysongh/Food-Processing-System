@@ -11,6 +11,7 @@ import SelectWorkers from './SelectWorkers';
 import AssignUnits from './AssignUnits';
 import Review from './Review';
 import ScanGLN from './ScanGLN';
+import ScanGTIN from './ScanGTIN';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -104,6 +105,8 @@ export default function Main() {
         return <AssignUnits workerIds={workerIds} setWorkerIds={setWorkerIds} />
       case 10:
         return <ScanGLN setActiveStep={setActiveStep} setGLN={setGLN} setDestination={setDestination}/>
+      case 11:
+        return <ScanGTIN setActiveStep={setActiveStep} setGTIN={setGTIN} />
       default:
         return 'Page not found';
     }

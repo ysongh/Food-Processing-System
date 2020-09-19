@@ -29,7 +29,7 @@ const AddBarcodes = ({ gln, setGLN, gtin, setGTIN, setActiveStep }) => {
                     value={gtin}
                     onChange={(e) => setGTIN(e.target.value)}
                 />
-                <IconButton onClick={() => setActiveStep(10)} color="primary">
+                <IconButton onClick={() => setActiveStep(11)} color="primary">
                     <CropFreeIcon />
                 </IconButton>
             </Box>
