@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Button } from '@material-ui/core';
 
+import { GlobalContext } from '../../context/GlobalState';
 import axios from '../../axios';
 
 const useStyles = makeStyles({
@@ -20,24 +21,20 @@ const useStyles = makeStyles({
 });
 
 const NewTask = () => {
+    const { user, loginUser } = useContext(GlobalContext);
+    const history = useHistory();
     const classes = useStyles();
 
-    const [data, setData] = useState({});
-    const [go] = useState(true);
-
-    useEffect(() => {
-        async function getTaskbyId() {
-            try{
-                const { data } = await axios.get('/task/task/' + '5f6598cb92cdb7db693c43ea');
-
-                setData(data.data);
-            } catch(err){
-                console.error(err);
-            }
+    const onSubmit = async () => {
+        try{
+            const { data } = await axios.put('/user/newtask/' + user._id);
+            
+            loginUser(data.data);
+            history.push('/task/main');
+        } catch(err){
+            console.error(err);
         }
-        
-        getTaskbyId();
-    }, [go]);
+    } 
 
     return(
         <>
@@ -47,28 +44,28 @@ const NewTask = () => {
                 Title of this Task:
             </Typography>
             <Typography className={classes.p} variant="body1">
-                { data.title }
+                { user.tasks && user.tasks[0].title }
             </Typography>
 
             <Typography variant="h6">
                 Description of this Task:
             </Typography>
             <Typography className={classes.p} variant="body1">
-                { data.description }
+                { user.tasks && user.tasks[0].description }
             </Typography>
 
             <Typography variant="h6">
                 Destination:
             </Typography>
             <Typography className={classes.p} variant="body1">
-                { data.destination }
+                { user.tasks && user.tasks[0].destination }
             </Typography>
 
             <div>
               <Button className={classes.btn} component={Link} to="/task/main" variant="contained" color="secondary">
                 Reject
               </Button>
-              <Button className={classes.btn} variant="contained" color="primary">
+              <Button className={classes.btn} variant="contained" color="primary" onClick={() => onSubmit()}>
                 Accept
               </Button>
             </div>
