@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import QrReader from 'react-qr-reader';
+
+import axios from '../../../axios';
  
 class ScanGLN extends Component {
-    handleScan = data => {
-      if (data) {
-          setTimeout(
-              function() {
-                  this.props.setGLN(data);
-                  this.props.setActiveStep(1);
-              }.bind(this),
-              1000
-          )
-      }
+    handleScan = async (value) => {
+        try{
+            if (value) {
+                this.props.setGLN(value);
+                const { data } = await axios.get('/gln/code/' + value);
+
+                this.props.setDestination(data.data.address);
+                this.props.setActiveStep(1);
+            }
+        } catch(err){
+            console.error(err);
+        }
     }
 
     handleError = err => {

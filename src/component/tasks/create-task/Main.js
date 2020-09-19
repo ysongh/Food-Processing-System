@@ -99,7 +99,7 @@ export default function Main() {
       case 3:
         return <AssignUnits workerIds={workerIds} setWorkerIds={setWorkerIds} />
       case 10:
-        return <ScanGLN setActiveStep={setActiveStep} setGLN={setGLN} />
+        return <ScanGLN setActiveStep={setActiveStep} setGLN={setGLN} setDestination={setDestination}/>
       default:
         return 'Page not found';
     }
