@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     }
 });
 
-const SelectUnites = ({ gln, gtin, unit, setUnit, destination }) => {
+const SelectUnites = ({ gln, gtin, unit, setUnit, location }) => {
     const classes = useStyles();
 
     return(
@@ -18,13 +18,13 @@ const SelectUnites = ({ gln, gtin, unit, setUnit, destination }) => {
             <h1>Select Unites</h1>
             
             <Typography variant="h6">
-                Destination:
+                From:
             </Typography>
             <Typography variant="body1">
                 (GLN: { gln })
             </Typography>
             <Typography className={classes.p} variant="body1">
-                { destination }
+                { location }
             </Typography>
 
             <Typography variant="body1">

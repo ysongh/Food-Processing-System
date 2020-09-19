@@ -10,7 +10,7 @@ class ScanGLN extends Component {
                 this.props.setGLN(value);
                 const { data } = await axios.get('/gln/code/' + value);
 
-                this.props.setDestination(data.data.address);
+                this.props.setLocation(data.data.address);
                 this.props.setActiveStep(1);
             }
         } catch(err){

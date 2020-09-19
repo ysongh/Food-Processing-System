@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     }
 });
 
-const Review = ({ title, description, unit, destination, gtin, startDate, workerIds }) => {
+const Review = ({ title, description, unit, location,destination, gtin, gln, startDate, workerIds }) => {
     const classes = useStyles();
 
     return(
@@ -33,7 +33,7 @@ const Review = ({ title, description, unit, destination, gtin, startDate, worker
                 Detail of this Task:
             </Typography>
             <Typography className={classes.p} variant="body1">
-                { unit } units of item package (GTIN: { gtin })
+                { unit } units of item package (GTIN: { gtin }) from { location } (GLN: {gln})
             </Typography>
 
             <Typography variant="h6">

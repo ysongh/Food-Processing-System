@@ -9,6 +9,7 @@ import AddBarcodes from './AddBarcodes';
 import SelectUnites from './SelectUnites';
 import SelectWorkers from './SelectWorkers';
 import AssignUnits from './AssignUnits';
+import Destination from './Destination';
 import Review from './Review';
 import ScanGLN from './ScanGLN';
 import ScanGTIN from './ScanGTIN';
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return [1, 2, 3, 4, 5];
+  return [1, 2, 3, 4, 5, 6];
 }
 
 export default function Main() {
@@ -45,6 +46,7 @@ export default function Main() {
   const [gtin, setGTIN] = useState("");
   const [unit, setUnit] = useState(0);
   const [destination, setDestination] = useState("");
+  const [location, setLocation] = useState("");
   const [startDate, setStartDate] = useState("");
   const [workerIds, setWorkerIds] = useState([]);
   const [workerList, setWorkerList] = useState([]);
@@ -76,7 +78,7 @@ export default function Main() {
 
   const onSubmit = async () => {
     try{
-        const detail = `${unit} units of item package (GTIN: ${gtin})`;
+        const detail = `${unit} units of item package (GTIN: ${gtin}) from ${location} (GLN: ${gln})`;
 
         const taskData = { title, description, detail, destination, startDate, workers: workerIds, gtin }
         await axios.post('/task/create', taskData);
@@ -100,13 +102,15 @@ export default function Main() {
       case 1:
         return <AddBarcodes gln={gln} setGLN={setGLN} gtin={gtin} setGTIN={setGTIN} setActiveStep={setActiveStep} />;
       case 2:
-        return <SelectUnites gln={gln} gtin={gtin} unit={unit} setUnit={setUnit} destination={destination} />;
+        return <SelectUnites gln={gln} gtin={gtin} unit={unit} setUnit={setUnit} location={location} />;
       case 3:
         return <SelectWorkers workerList={workerList} workerIds={workerIds} setWorkerIds={setWorkerIds} />;
       case 4:
         return <AssignUnits workerIds={workerIds} setWorkerIds={setWorkerIds} />
+      case 5:
+        return <Destination destination={destination} setDestination={setDestination} />
       case 10:
-        return <ScanGLN setActiveStep={setActiveStep} setGLN={setGLN} setDestination={setDestination}/>
+        return <ScanGLN setActiveStep={setActiveStep} setGLN={setGLN} setLocation={setLocation}/>
       case 11:
         return <ScanGTIN setActiveStep={setActiveStep} setGTIN={setGTIN} />
       default:
@@ -130,7 +134,9 @@ export default function Main() {
               title={title}
               description={description}
               unit={unit}
+              location={location}
               destination={destination}
+              gln={gln}
               gtin={gtin}
               startDate={startDate}
               workerIds={workerIds} />
