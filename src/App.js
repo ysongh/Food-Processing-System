@@ -12,6 +12,7 @@ import Tasks from './component/tasks/Tasks';
 import Task from './component/tasks/Task';
 import CreateTask from './component/tasks/create-task/Main';
 import More from './component/More';
+import Profile from './component/Profile';
 import QRcode from './component/QRcode';
 import CreateQR from './component/CreateQR';
 import GLNs from './component/GLNs';
@@ -30,6 +31,7 @@ function App() {
           <Route exact path="/qrreader" component={QRcode} />
           <Route exact path="/createqr" component={CreateQR} />
           <Route exact path="/more" component={More} />
+          <Route exact path="/profile" component={Profile} />
           <Route exact path="/glns" component={GLNs} />
         </Container>
         <BottomNav />

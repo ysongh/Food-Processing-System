@@ -37,7 +37,7 @@ export default function BottomNav() {
       <BottomNavigationAction component={Link} to="/qrreader" label="Scan" icon={<PhoneIphoneIcon />} />
       <BottomNavigationAction component={Link} to="/task/main" label="Tasks" icon={<FormatListBulletedIcon />} />
       <BottomNavigationAction component={Link} to="/more" label="More" icon={<MoreIcon />} />
-      <BottomNavigationAction label="Me" icon={<AccountCircleIcon />} />
+      <BottomNavigationAction component={Link} to="/profile" label="Me" icon={<AccountCircleIcon />} />
     </BottomNavigation>
   ) : null;
 }
