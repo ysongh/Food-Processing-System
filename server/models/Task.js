@@ -36,6 +36,11 @@ const TaskSchema = new mongoose.Schema({
             },
         }
     ],
+    gtin: {
+        type: String,
+        required: [true, "GTIN is required"],
+        unique: true,
+    },
     createdAt: {
         type: Date,
         default: Date.now

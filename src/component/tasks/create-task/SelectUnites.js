@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     }
 });
 
-const SelectUnites = ({ gln, destination }) => {
+const SelectUnites = ({ gln, gtin, destination }) => {
     const classes = useStyles();
 
     return(
@@ -23,6 +23,10 @@ const SelectUnites = ({ gln, destination }) => {
             </Typography>
             <Typography className={classes.p} variant="body1">
                 { destination }
+            </Typography>
+
+            <Typography variant="body1">
+                How many unites of items (GTIN: { gtin }) do you want to repackage?
             </Typography>
         </>
     )
