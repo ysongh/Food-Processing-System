@@ -6,6 +6,7 @@ import { Stepper, Step, StepLabel, Button } from '@material-ui/core';
 import axios from '../../../axios';
 import AddInformation from './AddInformation';
 import AddBarcodes from './AddBarcodes';
+import SelectUnites from './SelectUnites';
 import SelectWorkers from './SelectWorkers';
 import AssignUnits from './AssignUnits';
 import Review from './Review';
@@ -29,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return [1, 2, 3, 4];
+  return [1, 2, 3, 4, 5];
 }
 
 export default function Main() {
@@ -95,8 +96,10 @@ export default function Main() {
       case 1:
         return <AddBarcodes gln={gln} setGLN={setGLN} setActiveStep={setActiveStep} />;
       case 2:
-        return <SelectWorkers workerList={workerList} workerIds={workerIds} setWorkerIds={setWorkerIds} />;
+        return <SelectUnites gln={gln} destination={destination} />;
       case 3:
+        return <SelectWorkers workerList={workerList} workerIds={workerIds} setWorkerIds={setWorkerIds} />;
+      case 4:
         return <AssignUnits workerIds={workerIds} setWorkerIds={setWorkerIds} />
       case 10:
         return <ScanGLN setActiveStep={setActiveStep} setGLN={setGLN} setDestination={setDestination}/>
