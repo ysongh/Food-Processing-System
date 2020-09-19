@@ -21,8 +21,8 @@ function App() {
     <GlobalProvider>
       <Router className="App">
         <Container className="main" maxWidth="sm">
-          <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/" component={Login} />
+          <Route exact path="/home" component={Home} />
           <Route exact path="/task/main" component={MainTask} />
           <Route exact path="/task/tasks/:isCompleted" component={Tasks} />
           <Route exact path="/task/task/:taskid" component={Task} />

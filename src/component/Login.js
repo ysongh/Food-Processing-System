@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 
 import axios from '../axios';
@@ -7,6 +8,7 @@ import TextInputField from './common/TextInputField';
 
 const Login = () => {
     const { loginUser } = useContext(GlobalContext);
+    const history = useHistory();
 
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
@@ -18,6 +20,7 @@ const Login = () => {
             const { data } = await axios.put('/user/login', userData);
             
             loginUser(data.data);
+            history.push('/home');
         } catch(err){
             console.error(err);
         }
