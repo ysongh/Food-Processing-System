@@ -34,7 +34,7 @@ export default function BottomNav() {
       className={classes.root}
     >
       <BottomNavigationAction component={Link} to="/home" label="Home" icon={<HomeIcon />} />
-      <BottomNavigationAction component={Link} to="/qrreader" label="Scan" icon={<PhoneIphoneIcon />} />
+      <BottomNavigationAction component={Link} to="/task/workertask" label="Scan" icon={<PhoneIphoneIcon />} />
       <BottomNavigationAction component={Link} to="/task/main" label="Tasks" icon={<FormatListBulletedIcon />} />
       <BottomNavigationAction component={Link} to="/more" label="More" icon={<MoreIcon />} />
       <BottomNavigationAction component={Link} to="/profile" label="Me" icon={<AccountCircleIcon />} />

@@ -9,7 +9,7 @@ const User = require('../models/User');
 router.get('/tasks', async (req, res) => {
     try{
         let isCompleted = req.query.completed || false;
-        const tasks = await Task.find({ isCompleted });
+        const tasks = await Task.find({ isCompleted }).sort('-createdAt');
 
         return res.status(200).json({ data: tasks });
     } catch(err){
