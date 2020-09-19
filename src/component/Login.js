@@ -1,15 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Button } from '@material-ui/core';
 
+import axios from '../axios';
+import { GlobalContext } from '../context/GlobalState';
 import TextInputField from './common/TextInputField';
 
 const Login = () => {
+    const { loginUser } = useContext(GlobalContext);
+
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
 
-    const onSubmit = () => {
-        const userData = { name, password };
-        console.log(userData);
+    const onSubmit = async () => {
+        try{
+            const userData = { name, password };
+
+            const { data } = await axios.put('/user/login', userData);
+            
+            loginUser(data.data);
+        } catch(err){
+            console.error(err);
+        }
     } 
 
     return(

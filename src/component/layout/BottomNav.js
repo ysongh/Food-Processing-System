@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { BottomNavigation, BottomNavigationAction } from '@material-ui/core';
@@ -9,6 +9,8 @@ import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 import MoreIcon from '@material-ui/icons/More';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
+import { GlobalContext } from '../../context/GlobalState';
+
 const useStyles = makeStyles({
   root: {
     height: '10vh',
@@ -17,10 +19,12 @@ const useStyles = makeStyles({
 });
 
 export default function BottomNav() {
+  const { user } = useContext(GlobalContext);
   const classes = useStyles();
+
   const [value, setValue] = useState(0);
 
-  return (
+  return user.name ? (
     <BottomNavigation
       value={value}
       onChange={(event, newValue) => {
@@ -35,5 +39,5 @@ export default function BottomNav() {
       <BottomNavigationAction component={Link} to="/more" label="More" icon={<MoreIcon />} />
       <BottomNavigationAction label="Me" icon={<AccountCircleIcon />} />
     </BottomNavigation>
-  );
+  ) : null;
 }
