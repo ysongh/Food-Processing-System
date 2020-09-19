@@ -43,6 +43,7 @@ export default function Main() {
   const [description, setDescription] = useState("");
   const [gln, setGLN] = useState("");
   const [gtin, setGTIN] = useState("");
+  const [unit, setUnit] = useState(0);
   const [detail, setDetail] = useState("");
   const [destination, setDestination] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -98,7 +99,7 @@ export default function Main() {
       case 1:
         return <AddBarcodes gln={gln} setGLN={setGLN} gtin={gtin} setGTIN={setGTIN} setActiveStep={setActiveStep} />;
       case 2:
-        return <SelectUnites gln={gln} gtin={gtin} destination={destination} />;
+        return <SelectUnites gln={gln} gtin={gtin} unit={unit} setUnit={setUnit} destination={destination} />;
       case 3:
         return <SelectWorkers workerList={workerList} workerIds={workerIds} setWorkerIds={setWorkerIds} />;
       case 4:

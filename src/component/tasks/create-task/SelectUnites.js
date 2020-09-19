@@ -2,13 +2,15 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 
+import TextInputField from '../../common/TextInputField';
+
 const useStyles = makeStyles({
     p: {
         marginBottom: '1rem'
     }
 });
 
-const SelectUnites = ({ gln, gtin, destination }) => {
+const SelectUnites = ({ gln, gtin, unit, setUnit, destination }) => {
     const classes = useStyles();
 
     return(
@@ -27,6 +29,15 @@ const SelectUnites = ({ gln, gtin, destination }) => {
 
             <Typography variant="body1">
                 How many unites of items (GTIN: { gtin }) do you want to repackage?
+            </Typography>
+            <TextInputField
+                name="title"
+                type="number"
+                value={unit}
+                onChange={(e) => setUnit(e.target.value)}
+            />
+             <Typography variant="body2">
+                1-100
             </Typography>
         </>
     )
