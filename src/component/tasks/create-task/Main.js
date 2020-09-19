@@ -9,6 +9,7 @@ import AddBarcodes from './AddBarcodes';
 import SelectWorkers from './SelectWorkers';
 import AssignUnits from './AssignUnits';
 import Review from './Review';
+import ScanGLN from './ScanGLN';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -92,11 +93,13 @@ export default function Main() {
                   startDate={startDate}
                   setStartDate={setStartDate} />;
       case 1:
-        return <AddBarcodes gln={gln} setGLN={setGLN} />;
+        return <AddBarcodes gln={gln} setGLN={setGLN} setActiveStep={setActiveStep} />;
       case 2:
         return <SelectWorkers workerList={workerList} workerIds={workerIds} setWorkerIds={setWorkerIds} />;
       case 3:
         return <AssignUnits workerIds={workerIds} setWorkerIds={setWorkerIds} />
+      case 10:
+        return <ScanGLN setActiveStep={setActiveStep} setGLN={setGLN} />
       default:
         return 'Page not found';
     }

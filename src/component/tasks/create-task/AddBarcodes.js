@@ -4,7 +4,7 @@ import CropFreeIcon from '@material-ui/icons/CropFree';
 
 import TextInputField from '../../common/TextInputField';
 
-const AddBarcodes = ({ gln, setGLN }) => {
+const AddBarcodes = ({ gln, setGLN, setActiveStep }) => {
     return(
         <>
             <h1>Add GLN and GTIN</h1>
@@ -16,7 +16,7 @@ const AddBarcodes = ({ gln, setGLN }) => {
                     value={gln}
                     onChange={(e) => setGLN(e.target.value)}
                 />
-                <IconButton color="primary">
+                <IconButton onClick={() => setActiveStep(10)} color="primary">
                     <CropFreeIcon />
                 </IconButton>
             </Box>
