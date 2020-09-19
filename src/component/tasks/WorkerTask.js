@@ -21,7 +21,7 @@ const WorkerTask = () => {
             <List>
                 { user.tasks && user.tasks.filter(task => task.status === 'Ongoing' ).map((task, index) => {
                     return(
-                        <ListItem className={index % 2 === 0 && classes.list} key={task._id} component={Link} to="/qrreader" button>
+                        <ListItem className={index % 2 === 0 && classes.list} key={task._id} component={Link} to={`/task/workertask/${task.taskId}`} button>
                             <ListItemText
                                 primary={task.createdAt}
                                 secondary={task.title || "Task"}
