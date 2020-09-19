@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route  } from 'react-router-dom';
 import { Container } from '@material-ui/core';
 
+import { GlobalProvider } from './context/GlobalState';
 import BottomNav from './component/layout/BottomNav';
 
 import Home from './component/Home';
@@ -16,20 +17,22 @@ import GLNs from './component/GLNs';
 
 function App() {
   return (
-    <Router className="App">
-      <Container className="main" maxWidth="sm">
-        <Route exact path="/" component={Home} />
-        <Route exact path="/task/main" component={MainTask} />
-        <Route exact path="/task/tasks/:isCompleted" component={Tasks} />
-        <Route exact path="/task/task/:taskid" component={Task} />
-        <Route exact path="/task/add" component={CreateTask} />
-        <Route exact path="/qrreader" component={QRcode} />
-        <Route exact path="/createqr" component={CreateQR} />
-        <Route exact path="/more" component={More} />
-        <Route exact path="/glns" component={GLNs} />
-      </Container>
-      <BottomNav />
-    </Router>
+    <GlobalProvider>
+      <Router className="App">
+        <Container className="main" maxWidth="sm">
+          <Route exact path="/" component={Home} />
+          <Route exact path="/task/main" component={MainTask} />
+          <Route exact path="/task/tasks/:isCompleted" component={Tasks} />
+          <Route exact path="/task/task/:taskid" component={Task} />
+          <Route exact path="/task/add" component={CreateTask} />
+          <Route exact path="/qrreader" component={QRcode} />
+          <Route exact path="/createqr" component={CreateQR} />
+          <Route exact path="/more" component={More} />
+          <Route exact path="/glns" component={GLNs} />
+        </Container>
+        <BottomNav />
+      </Router>
+    </GlobalProvider>
   );
 }
 
