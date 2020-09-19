@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from "react-router";
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Typography } from '@material-ui/core';
 
+import { GlobalContext } from '../../context/GlobalState';
 import axios from '../../axios';
 
 const useStyles = makeStyles({
@@ -23,7 +24,8 @@ const useStyles = makeStyles({
     }
 });
 
-const Task = () => {
+const WorkerTaskDetail = () => {
+    const { user_gln, user_gtin } = useContext(GlobalContext);
     const classes = useStyles();
     const { taskid } = useParams();
 
@@ -55,6 +57,28 @@ const Task = () => {
                 Date: { data.startDate }
             </Typography>
 
+            { user_gln && (
+                <>
+                    <Typography className={classes.title} variant="body1" color="primary">
+                        GLN: 
+                    </Typography>
+                    <Typography variant="caption">
+                        { user_gln }
+                    </Typography>
+                </>
+            )}
+
+            { user_gtin && (
+                <>
+                    <Typography variant="body1" color="primary">
+                        GTIN: 
+                    </Typography>
+                    <Typography variant="caption">
+                        { user_gtin }
+                    </Typography>
+                </>
+            )}
+
             <Typography className={classes.p} variant="body1" align="center">
                 Please scan GTIN or GLN
             </Typography>
@@ -65,4 +89,4 @@ const Task = () => {
     )
 }
 
-export default Task;
+export default WorkerTaskDetail;
