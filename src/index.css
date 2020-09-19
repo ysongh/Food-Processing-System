@@ -7,6 +7,12 @@ body {
   overflow: scroll;
 }
 
+.heroImg{
+  display: block;
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
 .qr-code{
   margin: 1rem !important;
 }

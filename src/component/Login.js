@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 
 import axios from '../axios';
+import Logo from '../images/logo.png'
 import { GlobalContext } from '../context/GlobalState';
 import TextInputField from './common/TextInputField';
 
@@ -28,7 +29,7 @@ const Login = () => {
 
     return(
         <div className="mt-5">
-            <h1>Login</h1>
+            <img className="heroImg" src={Logo} alt="Logo" />
             <TextInputField
                 label="Name"
                 name="name"
@@ -47,7 +48,7 @@ const Login = () => {
             <br />
             <br />
 
-            <Button variant="contained" color="primary" onClick={() => onSubmit()}>
+            <Button variant="contained" color="primary" size="large" onClick={() => onSubmit()}>
                 Login
             </Button>
         </div>
