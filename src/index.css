@@ -10,3 +10,5 @@ body {
 .qr-code{
   margin: 1rem !important;
 }
+
+.mt-5{ margin-top: 5rem; }

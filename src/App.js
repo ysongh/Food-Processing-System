@@ -6,6 +6,7 @@ import { GlobalProvider } from './context/GlobalState';
 import BottomNav from './component/layout/BottomNav';
 
 import Home from './component/Home';
+import Login from './component/Login';
 import MainTask from './component/tasks/MainTask';
 import Tasks from './component/tasks/Tasks';
 import Task from './component/tasks/Task';
@@ -21,6 +22,7 @@ function App() {
       <Router className="App">
         <Container className="main" maxWidth="sm">
           <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
           <Route exact path="/task/main" component={MainTask} />
           <Route exact path="/task/tasks/:isCompleted" component={Tasks} />
           <Route exact path="/task/task/:taskid" component={Task} />
