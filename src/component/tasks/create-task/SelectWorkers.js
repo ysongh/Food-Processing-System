@@ -49,7 +49,7 @@ const SelectWorkers = ({ workerList, workerIds, setWorkerIds }) => {
                                 disableRipple
                             />
                         </ListItemIcon>
-                        <ListItemText primary={worker.name} />
+                        <ListItemText primary={worker.name} secondary={worker.address}/>
                     </ListItem>
                 )
             })}
