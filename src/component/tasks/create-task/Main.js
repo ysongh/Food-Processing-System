@@ -10,6 +10,7 @@ import AddBarcodes from './AddBarcodes';
 import SelectUnites from './SelectUnites';
 import SelectWorkers from './SelectWorkers';
 import AssignUnits from './AssignUnits';
+import Timeframe from './Timeframe';
 import Destination from './Destination';
 import Review from './Review';
 import ScanGLN from './ScanGLN';
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return [1, 2, 3, 4, 5, 6];
+  return [1, 2, 3, 4, 5, 6, 7];
 }
 
 export default function Main() {
@@ -110,6 +111,8 @@ export default function Main() {
       case 4:
         return <AssignUnits workerIds={workerIds} setWorkerIds={setWorkerIds} />
       case 5:
+        return <Timeframe startDate={startDate} setStartDate={setStartDate}/>
+      case 6:
         return <Destination destination={destination} setDestination={setDestination} />
       case 10:
         return <ScanGLN setActiveStep={setActiveStep} setGLN={setGLN} setLocation={setLocation}/>
