@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Badge, Button } from '@material-ui/core';
+
+import { GlobalContext } from '../context/GlobalState';
 
 const useStyles = makeStyles({
     container: {
@@ -21,13 +23,14 @@ const useStyles = makeStyles({
 });
 
 const Home = () => {
+    const { user } = useContext(GlobalContext);
     const classes = useStyles();
 
     return(
         <>
             <div className={classes.container}>
                 <Box className={classes.mb} display="flex" justifyContent="center">
-                    <Badge badgeContent={1} color="secondary">
+                    <Badge badgeContent={user.isNewTask || user.isOngoingTask || user.isCompletedTask ? 1 : 0} color="secondary">
                         <Button className={classes.btn} component={Link} to="/task/main" variant="contained">
                             Task
                         </Button>
