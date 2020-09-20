@@ -21,6 +21,15 @@ const useStyles = makeStyles({
         fontSize: '2rem',
         textAlign: 'center',
         fontSize: '3rem'
+    },
+    sendBtn: {
+        display: 'block',
+        width: '14rem',
+        margin: 'auto',
+        marginTop: '2rem',
+        fontSize: '2rem',
+        textAlign: 'center',
+        fontSize: '2rem'
     }
 });
 
@@ -62,7 +71,7 @@ const WorkerTaskDetail = () => {
                     <Typography className={classes.title} variant="body1" color="primary">
                         GLN: 
                     </Typography>
-                    <Typography variant="caption">
+                    <Typography variant="body1">
                         { user_gln }
                     </Typography>
                 </>
@@ -73,7 +82,7 @@ const WorkerTaskDetail = () => {
                     <Typography variant="body1" color="primary">
                         GTIN: 
                     </Typography>
-                    <Typography variant="caption">
+                    <Typography variant="body1">
                         { user_gtin }
                     </Typography>
                 </>
@@ -82,9 +91,15 @@ const WorkerTaskDetail = () => {
             <Typography className={classes.p} variant="body1" align="center">
                 Please scan GTIN or GLN
             </Typography>
-            <Button className={classes.btn} component={Link} to="/qrreader" variant="contained" color="primary">
+            <Button className={classes.btn} component={Link} to={`/task/scantask/${taskid}`} variant="contained" color="primary">
                 Scan
             </Button>
+            { user_gln && (
+                <Button className={classes.sendBtn} component={Link} to={`/task/main`} variant="contained">
+                    Submit
+                </Button>
+            )}
+            
         </>
     )
 }
