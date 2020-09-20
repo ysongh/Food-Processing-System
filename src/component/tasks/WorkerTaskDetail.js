@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useParams } from "react-router";
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Typography } from '@material-ui/core';
@@ -34,7 +34,8 @@ const useStyles = makeStyles({
 });
 
 const WorkerTaskDetail = () => {
-    const { user_gln, user_gtin } = useContext(GlobalContext);
+    const { user, loginUser, user_gln, user_gtin } = useContext(GlobalContext);
+    const history = useHistory();
     const classes = useStyles();
     const { taskid } = useParams();
 
@@ -55,6 +56,17 @@ const WorkerTaskDetail = () => {
         
         getTaskbyId();
     }, [go, taskid]);
+
+    const onSubmit = async () => {
+        try{
+            const { data } = await axios.put(`/user/completed/${user._id}/${taskid}`);
+            
+            loginUser(data.data);
+            history.push('/task/main');
+        } catch(err){
+            console.error(err);
+        }
+    }
 
     return(
         <>  
@@ -95,7 +107,7 @@ const WorkerTaskDetail = () => {
                 Scan
             </Button>
             { user_gln && (
-                <Button className={classes.sendBtn} component={Link} to={`/task/main`} variant="contained">
+                <Button className={classes.sendBtn} onClick={() => onSubmit()} variant="contained">
                     Submit
                 </Button>
             )}

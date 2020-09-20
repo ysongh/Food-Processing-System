@@ -87,4 +87,32 @@ router.put('/newtask/:userid', async (req, res) => {
     }
 });
 
+// PUT /api/user/completed/<userid>/<taskid>
+// change an user's task to Completed
+router.put('/completed/:userid/:taskid', async (req, res) => {
+    try{
+        const user = await User.findById(req.params.userid);
+
+        if(!user){
+            return res.status(400).json({ errors: 'User not found' });
+        }
+
+        user.isOngoingTask = false;
+        user.isCompletedTask = true;
+
+        for(let task of user.tasks){
+            if(task.taskId == req.params.taskid){
+                task.status = "Completed";
+                break;
+            }
+        }
+
+        await user.save();
+
+        return res.status(200).json({ data: user });
+    } catch(err){
+        console.error(err);
+    }
+});
+
 module.exports = router;
