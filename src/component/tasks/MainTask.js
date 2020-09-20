@@ -51,7 +51,7 @@ const MainTask = () => {
 
             <Box className={classes.mb} display="flex" justifyContent="center">
                 <Badge badgeContent={user.isOngoingTask ? 1 : 0} color="secondary">
-                    <Button className={classes.btn} component={Link} to="/task/tasks/false" variant="contained">
+                    <Button className={classes.btn} component={Link} to="/task/workertask" variant="contained">
                         Ongoing Task
                     </Button>
                 </Badge>
@@ -59,7 +59,7 @@ const MainTask = () => {
             
             <Box display="flex" justifyContent="center">
                 <Badge badgeContent={user.isCompletedTask ? 1 : 0} color="secondary">
-                    <Button className={classes.btn} component={Link} to="/task/tasks/true" variant="contained">
+                    <Button className={classes.btn} component={Link} to="/task/completedtasks" variant="contained">
                         Completed Task
                     </Button>
                 </Badge>
