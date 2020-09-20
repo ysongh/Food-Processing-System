@@ -49,6 +49,19 @@ router.post('/create', async (req, res) => {
             await user.save();
         }
 
+        const owner = await User.findById(dataTask.ownerId);
+
+        owner.isOngoingTask = true;
+        owner.tasks.unshift({
+            taskId: dataTask._id,
+            title: dataTask.title,
+            description: dataTask.description,
+            destination: dataTask.destination,
+            status: 'Ongoing'
+        });
+
+        await owner.save();
+
         return res.status(201).json({ data: dataTask });
         
     } catch(err){

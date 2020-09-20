@@ -39,7 +39,7 @@ const WorkerTaskDetail = () => {
     const classes = useStyles();
     const { taskid } = useParams();
 
-    const [data, setData] = useState({});
+    const [taskData, setTaskData] = useState({});
     const [go] = useState(true);
 
     useEffect(() => {
@@ -48,7 +48,7 @@ const WorkerTaskDetail = () => {
                 const { data } = await axios.get('/task/task/' + taskid);
 
                 console.log(data)
-                setData(data.data);
+                setTaskData(data.data);
             } catch(err){
                 console.error(err);
             }
@@ -60,6 +60,8 @@ const WorkerTaskDetail = () => {
     const onSubmit = async () => {
         try{
             const { data } = await axios.put(`/user/completed/${user._id}/${taskid}`);
+            await axios.put(`/user/completed/${taskData.ownerId}/${taskid}`);
+
             
             loginUser(data.data);
             history.push('/task/main');
@@ -71,11 +73,11 @@ const WorkerTaskDetail = () => {
     return(
         <>  
             <Typography className={classes.title} variant="h5">
-                Task: { data.title }
+                Task: { taskData.title }
             </Typography>
 
             <Typography variant="h5">
-                Date: { data.startDate }
+                Date: { taskData.startDate }
             </Typography>
 
             { user_gln && (
