@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     }
 });
 
-const Review = ({ title, description, unit, location,destination, gtin, gln, startDate, workerIds }) => {
+const Review = ({ title, description, unit, location,destination, gtin, gln, startDate, workerIds, date1, date2, date3 }) => {
     const classes = useStyles();
 
     return(
@@ -37,13 +37,6 @@ const Review = ({ title, description, unit, location,destination, gtin, gln, sta
             </Typography>
 
             <Typography variant="h6">
-                Destination:
-            </Typography>
-            <Typography className={classes.p} variant="body1">
-                { destination }
-            </Typography>
-
-            <Typography variant="h6">
                 Start Date:
             </Typography>
             <Typography className={classes.p} variant="body1">
@@ -60,6 +53,26 @@ const Review = ({ title, description, unit, location,destination, gtin, gln, sta
                     </Typography>
                 )
             })}
+
+            <Typography variant="h6">
+                Timeframe:
+            </Typography>
+            <Typography className={classes.p} variant="body1">
+                { date1 } delivery to workers
+            </Typography>
+            <Typography className={classes.p} variant="body1">
+                { date2 } repackaging
+            </Typography>
+            <Typography className={classes.p} variant="body1">
+                { date3 } delivery to destination
+            </Typography>
+
+            <Typography variant="h6">
+                Destination:
+            </Typography>
+            <Typography className={classes.p} variant="body1">
+                { destination }
+            </Typography>
         </>
     )
 }

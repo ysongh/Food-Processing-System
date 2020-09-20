@@ -51,6 +51,9 @@ export default function Main() {
   const [destination, setDestination] = useState("");
   const [location, setLocation] = useState("");
   const [startDate, setStartDate] = useState("");
+  const [date1, setDate1] = useState("");
+  const [date2, setDate2] = useState("");
+  const [date3, setDate3] = useState("");
   const [workerIds, setWorkerIds] = useState([]);
   const [workerList, setWorkerList] = useState([]);
   const [go] = useState(true);
@@ -111,7 +114,7 @@ export default function Main() {
       case 4:
         return <AssignUnits workerIds={workerIds} setWorkerIds={setWorkerIds} />
       case 5:
-        return <Timeframe startDate={startDate} setStartDate={setStartDate}/>
+        return <Timeframe date1={date1} setDate1={setDate1} date2={date2} setDate2={setDate2} date3={date3} setDate3={setDate3}/>
       case 6:
         return <Destination destination={destination} setDestination={setDestination} />
       case 10:
@@ -144,7 +147,10 @@ export default function Main() {
               gln={gln}
               gtin={gtin}
               startDate={startDate}
-              workerIds={workerIds} />
+              workerIds={workerIds}
+              date1={date1}
+              date2={date2}
+              date3={date3} />
 
             <Button className={classes.backButton} onClick={handleBack}>Back</Button>
             <Button className={classes.nextButton} onClick={() => onSubmit()} variant="contained">

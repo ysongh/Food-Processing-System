@@ -30,32 +30,32 @@ function getSteps() {
   return ['Delivery to Workers', 'Repackage', 'Delivery to Destination'];
 }
 
-function getStepContent(step, startDate, setStartDate) {
+function getStepContent(step, date1, setDate1, date2, setDate2, date3, setDate3) {
   switch (step) {
     case 0:
       return <DateInputField
                 label="Start Date"
                 name="startDate"
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)} />
+                value={date1}
+                onChange={(e) => setDate1(e.target.value)} />
     case 1:
       return <DateInputField
                 label="Start Date"
                 name="startDate"
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)} />
+                value={date2}
+                onChange={(e) => setDate2(e.target.value)} />
     case 2:
       return <DateInputField
                 label="Start Date"
                 name="startDate"
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)} />
+                value={date3}
+                onChange={(e) => setDate3(e.target.value)} />
     default:
       return 'Unknown step';
   }
 }
 
-export default function Timeframe({ startDate, setStartDate }) {
+export default function Timeframe({ date1, setDate1, date2, setDate2, date3, setDate3 }) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
@@ -76,7 +76,7 @@ export default function Timeframe({ startDate, setStartDate }) {
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
             <StepContent>
-              {getStepContent(index, startDate, setStartDate)}
+              {getStepContent(index, date1, setDate1, date2, setDate2, date3, setDate3)}
               <div className={classes.actionsContainer}>
                 <div>
                   <Button
