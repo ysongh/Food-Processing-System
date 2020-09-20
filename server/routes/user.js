@@ -126,7 +126,7 @@ router.put('/iscompleted/:userid', async (req, res) => {
             return res.status(400).json({ errors: 'User not found' });
         }
 
-        user.isOngoingTask = false;
+        user.isCompletedTask = false;
 
         await user.save();
 

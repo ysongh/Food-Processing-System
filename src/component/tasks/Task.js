@@ -1,17 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from "react-router";
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { Typography, Button } from '@material-ui/core';
 
+import { GlobalContext } from '../../context/GlobalState';
 import axios from '../../axios';
 
 const useStyles = makeStyles({
     p: {
         marginBottom: '1rem'
-    }
+    },
+    btn: {
+        display: 'block',
+        margin: 'auto',
+        marginTop: '2rem',
+        width: '17rem',
+        fontSize: '2rem',
+        textAlign: 'center'
+    },
 });
 
 const Task = () => {
+    const { user, loginUser } = useContext(GlobalContext);
     const classes = useStyles();
     const { taskid } = useParams();
 
@@ -23,19 +34,30 @@ const Task = () => {
             try{
                 const { data } = await axios.get('/task/task/' + taskid);
 
-                console.log(data)
                 setData(data.data);
+            } catch(err){
+                console.error(err);
+            }
+        }
+
+        async function isCompletedFalse() {
+            try{
+                const { data } = await axios.put('/user/iscompleted/' + user._id);
+
+                loginUser(data.data);
+                console.log(data.data)
             } catch(err){
                 console.error(err);
             }
         }
         
         getTaskbyId();
+        isCompletedFalse();
     }, [go, taskid]);
 
     return(
         <>
-            <h1>{ !data.isCompleted ? 'Ongoing ' : 'Completed ' }Tasks</h1>
+            <h1>Completed Task</h1>
             
             <Typography variant="h6">
                 Title of this Task:
@@ -65,12 +87,9 @@ const Task = () => {
                 { data.destination }
             </Typography>
 
-            <Typography variant="h6">
-                Start Date:
-            </Typography>
-            <Typography className={classes.p} variant="body1">
-                { data.startDate }
-            </Typography>
+            <Button className={classes.btn} component={Link} to="/task/main/" variant="contained">
+                Close
+            </Button>
         </>
     )
 }
