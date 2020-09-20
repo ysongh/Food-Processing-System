@@ -116,4 +116,24 @@ router.put('/completed/:userid/:taskid', async (req, res) => {
     }
 });
 
+// PUT /api/user/iscompleted/<userid>
+// change an user's iscompleted to false
+router.put('/iscompleted/:userid', async (req, res) => {
+    try{
+        const user = await User.findById(req.params.userid);
+
+        if(!user){
+            return res.status(400).json({ errors: 'User not found' });
+        }
+
+        user.isOngoingTask = false;
+
+        await user.save();
+
+        return res.status(200).json({ data: user });
+    } catch(err){
+        console.error(err);
+    }
+});
+
 module.exports = router;

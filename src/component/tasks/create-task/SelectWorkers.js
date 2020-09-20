@@ -40,7 +40,7 @@ const SelectWorkers = ({ workerList, workerIds, setWorkerIds }) => {
         <List className={classes.root}>
             { workerList.map((worker, index) => {
                 return(
-                    <ListItem key={worker._id}role={undefined} dense button onClick={handleToggle(index)}>
+                    <ListItem key={worker._id} role={undefined} dense button onClick={handleToggle(index)}>
                         <ListItemIcon>
                             <Checkbox
                                 edge="start"
