@@ -53,7 +53,7 @@ const Task = () => {
         
         getTaskbyId();
         isCompletedFalse();
-    }, [go, taskid]);
+    }, [go, taskid, user, loginUser]);
 
     return(
         <>

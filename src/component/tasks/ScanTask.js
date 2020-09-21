@@ -20,7 +20,7 @@ const ScanTask = () => {
                     addGTIN('312312u3222332');
                 }
                 history.push(`/task/workertask/${taskid}`)
-            }.bind(this),
+            },
             1000
         )
     }

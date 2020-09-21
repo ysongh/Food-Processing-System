@@ -18,7 +18,6 @@ const useStyles = makeStyles({
         display: 'block',
         width: '14rem',
         margin: 'auto',
-        fontSize: '2rem',
         textAlign: 'center',
         fontSize: '3rem'
     },
@@ -27,7 +26,6 @@ const useStyles = makeStyles({
         width: '14rem',
         margin: 'auto',
         marginTop: '2rem',
-        fontSize: '2rem',
         textAlign: 'center',
         fontSize: '2rem'
     }
